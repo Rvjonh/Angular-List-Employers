@@ -1,0 +1,13 @@
+.form-check-container{
+    display: inline-flex;
+    align-items: center;
+}
+input[type="radio"]{
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+}
+input[type="radio"] ~ label{
+    cursor: pointer;
+    font-weight: 600;
+}

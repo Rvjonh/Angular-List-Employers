@@ -1,0 +1,40 @@
+<div class="container mt-3">
+  <app-count-employers 
+    [all]="getTotalEmployers()"
+    [m]="getTotalMasculineEmployers()"
+    [f]="getTotalFemenineEmployers()"
+    (changeSelectionRadioGenre)="updateRadioGenreSelection($event)"
+    >
+
+  </app-count-employers>
+
+    <div class="card mt-3">
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Genero</th>
+                    <th>Salario</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let employer of listEmployers">
+                    <tr *ngIf="selectRadioGenre === 'all' || selectRadioGenre === employer.genre">
+                      <th scope="row">{{ employer.number }}</th>
+                      <td>{{ employer.name | titlecase }}</td>
+                      <td>{{ employer.last_name | titlecase }}</td>
+                      
+                      <td *ngIf="employer.genre && employer.genre ==='M'">Masculino</td>
+                      <td *ngIf="employer.genre && employer.genre ==='F'">Femenine</td>
+                      <td *ngIf="!employer.genre">unknown</td>
+                      <td>{{ employer.salary | currency }}</td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
